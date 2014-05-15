@@ -18,7 +18,12 @@ $(document).ready(function() {
             // tv.sme.sk, kde su videa spustane automaticky
 
             videoChild.css('display', 'none');
-            st_create_html5_video_code('smeplayer_id' + videoId, new Array(630, 354, 'autoplay', videoId, ''));
+
+            // ak je v url "vhd", znamena to, ze pouzivatel na tv.sme.sk zvolil prehratie videa vo vysokej kvalite
+            if (location.href.indexOf("vhd") > -1)
+                st_create_html5_video_code('smeplayer_id' + videoId, new Array(950, 534, 'autoplay', videoId, ''));
+            else
+                st_create_html5_video_code('smeplayer_id' + videoId, new Array(630, 354, 'autoplay', videoId, ''));
         }
         else {
             // embedovane videa v clankoch, ktore nie su spustane automaticky
