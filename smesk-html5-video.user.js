@@ -42,4 +42,20 @@ $(document).ready(function() {
 
         return false;
     });
+
+    // na titulke sme.sk je video v inom elemente
+    $('#smeplayer_hs').each(function () {
+        var clickfn = $(this).find('div > a').attr('onclick');
+        var videoId = clickfn.split("'")[3];
+
+        jQuery('<div/>', { id: 'playHTML5VideoWrap', style: 'text-align: center;' }).insertAfter(this);
+        jQuery('<a/>', {
+            id: 'playHTML5Video',
+            href: '#',
+            title: '',
+            rel: 'external',
+            text: 'Spustiť HTML5 video',
+            onclick: "st_create_html5_video_code('smeplayer_hs', new Array(490, 276, 'autoplay', " + videoId + ", '')); return false;"
+        }).appendTo($('#playHTML5VideoWrap'));
+    });
 });
